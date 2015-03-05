@@ -46,7 +46,7 @@ def separatewords(text,minWordReturnSize):
 # Utility function to return a list of sentences.
 # @param text The text that must be split in to sentences.
 def splitSentences(text):
-	sentenceDelimiters = re.compile('[.!?,;:\t\\-\\"\\(\\)\\\'\u2019\u2013]')
+	sentenceDelimiters = re.compile(u'[.!?,;:\t\\-\\"\\(\\)\\\'\u2019\u2013]')
 	sentenceList = sentenceDelimiters.split(text)
 	return sentenceList
 
@@ -121,14 +121,14 @@ def rake(text):
 
 	# generate candidate keyword scores
 	keywordcandidates = generateCandidateKeywordScores(phraseList, wordscores)
-	if debug: print(keywordcandidates)
+	if debug: print keywordcandidates
 
-	sortedKeywords = sorted(iter(keywordcandidates.items()), key=operator.itemgetter(1), reverse=True)
-	if debug: print(sortedKeywords)
+	sortedKeywords = sorted(keywordcandidates.iteritems(), key=operator.itemgetter(1), reverse=True)
+	if debug: print sortedKeywords
 
 	totalKeywords = len(sortedKeywords)
-	if debug: print(totalKeywords)
-	print(sortedKeywords[0:(totalKeywords/3)])
+	if debug: print totalKeywords
+	print sortedKeywords[0:(totalKeywords/3)]
 	return  sortedKeywords
 
 if test:

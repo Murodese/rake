@@ -4,7 +4,6 @@ import os
 from setuptools import setup,find_packages
 
 README = os.path.join(os.path.dirname(__file__), 'README.md')
-REQUIREMENT = os.path.join(os.path.dirname(__file__), 'requirements.txt')
 
 setup(name= 'rake',
 	version='1.0',
@@ -17,10 +16,9 @@ setup(name= 'rake',
 	package_data = {'':['*.*'],'rake':['*.*']},
 	namespace_packages=['rake'],
 	long_description=open(README).read() + "\n\n",
-	description = ('Rapid Automatic Keywords Extraction', "Just a Practice"),
+	description = 'Rapid Automatic Keywords Extraction',
 	classifiers=[
 		"Programming Language :: Python",
 		("Topic :: Software Development :: Libraries :: Python Modules"),
 	],
-	install_requires=[x.replace("==",">=") for x in open(REQUIREMENT).read().split('\n') if x!=""],
     )
